@@ -1,0 +1,76 @@
+
+
+
+<%if false%>
+<script type = "text/javascript">
+function setVideo(data){
+	$('#test').hide();
+    var src_array = [];
+	var objects = $(data).find('content'); // return an array of all content elements in the data
+	objects.each(function(){
+		if($(this).attr("type") == 'application/x-shockwave-flash'){ // adds value of src to array if content is video
+			src_array.push($(this).attr("src"));
+		}
+	
+	var video_index = Math.floor(Math.random()*src_array.length);
+	$('#main_video').attr({"src" : src_array[video_index]});
+	
+  var html = ['<ul>'];
+  for (var i = 0; i < entries.length; i++) {
+    var entry = entries[i];
+    var title = entry.title.$t;
+    html.push('<li>', title, '</li>');
+  }
+  html.push('</ul>');
+  document.getElementById('videos').innerHTML = html.join('');	
+});
+
+</script>
+
+<%end%>
+
+
+
+<h1>Hipster Music. Enjoy!</h1>
+
+
+  <div class = "video_content">
+  
+
+<iframe id = "main_video" width="560" height="315" src="http://www.youtube.com/embed/BkEo65QkxHs" 
+frameborder="0" allowfullscreen></iframe>
+<br/>
+<br/>
+<%= link_to 'New Video', new_video_path %>
+</div>   
+
+<p id = "test"> cake </p>
+<br />
+
+
+
+<script type="text/javascript">
+function setVideo(data) {
+  $('#test').hide();
+  var src_array = [];  
+  var feed = data.feed;
+  var entries = feed.entry || [];
+  
+   $(entries).each(function(){
+  	if(this.content.type == 'application/x-shockwave-flash'){
+  		src_array.push(this.content.src);	
+  	}
+	var video_index = Math.floor(Math.random()*src_array.length);
+	$('#main_video').attr({"src" : src_array[video_index]});
+  }); 
+    
+
+}
+</script>
+
+
+<div id="videos" />
+<script 
+    type="text/javascript" 
+src='<%=@search_url%>'>
+</script>

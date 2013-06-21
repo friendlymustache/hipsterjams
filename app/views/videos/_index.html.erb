@@ -1,0 +1,46 @@
+<h1>Hipster Music. Enjoy!</h1>
+
+<% if false%>
+------------------------------------------------------------------------------------------
+
+<%= div_for(@videos) do |video|%>
+
+  <div class = "Video Content">
+  	
+   <%= video.name %> <br/>
+   <%= video.id %> <br/>
+   <%= video.hipster %> <br/> <br/>
+   <%= link_to 'Show', video %> <br/>
+   <%= link_to 'Edit', edit_video_path(video) %> <br/>
+   <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %> <br/>
+<% end %>
+
+<br />
+
+<%= link_to 'New Video', new_video_path %>
+
+
+------------------------------------------------------------------------------------------
+<%end%>
+
+
+  <div class = "video_content">
+  	
+  	<%if false%>
+  	------------------------------------------------------------------------------------------
+   <%= @video.name %> <br/>
+   <%= @video.id %> <br/>
+   <%= @video.hipster %> <br/> <br/>
+   ------------------------------------------------------------------------------------------
+   <%end%>
+
+<iframe id = "main_video" width="560" height="315" src="http://www.youtube.com/embed/BkEo65QkxHs" 
+frameborder="0" allowfullscreen></iframe>
+<br/>
+<br/>
+<%= link_to 'New Video', new_video_path %>
+</div>   
+
+<p id = "test"> cake </p>
+<br />
+

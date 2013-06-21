@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Slider - Snap to increments</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script>
+  $(function() {
+  	// var o = $(".ui-slider-handle").offset(); - doesn't work because slider not yet created lol
+  	original_offset = 20;
+  	// var original_offset = 0;
+
+    var height = $('#amount').height();  	
+    $( "#slider" ).slider({
+      orientation: "horizontal",
+      value:5,
+      min: 0,
+      max: 10,
+      step: 1,
+      slide: function( event, ui ) {
+        $( "#amount" ).val(ui.value );
+        var scale_offset = $("#slider").offset();
+        
+        var slider_value = ui.value; 
+        
+		var slider_width = $('#slider').width();
+        
+	   	var amount_width = $('#amount').width();
+	   	
+        $('#amount').offset({left: -(amount_width/2+5)+scale_offset.left+(slider_value)*slider_width*0.1, top: scale_offset.top+18});	
+        $('#new_vid_button').attr("href", "videos/new?popularity="+ui.value);
+        // $('#yes_button').attr("href","/hipster"+"?hipsterness=true&popularity="+ui.value);
+        // $('#no_button').attr("href","/hipster"+"?hipsterness=false&popularity="+ui.value);
+        
+    	// var o = $(".ui-slider-handle").offset();  
+    	// var original_offset = o.top;
+    	// $('#hide').val(original_offset);  //offset before movement  	
+    	// original_offset = current_offset;
+    	// $('#hide2').val((10-slider_value)*slider_height*0.1); 
+    	
+	
+    															   
+      } //end of response to slider event
+    }); //end of slider definition
+    
+    $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+       var scale_offset = $("#slider").offset(); 
+       var slider_value = 5; 
+	   var slider_width = $('#slider').width();
+	   var amount_width = $('#amount').width();    
+       $('#amount').offset({left: -(amount_width/2+5)+scale_offset.left+(slider_value)*slider_width*0.1, top: scale_offset.top+18});	    
+
+  });
+  
+  </script>
+</head>
+<body>
+ 
+<p >
+
+  <input type="text" disabled = "true" id="amount"  />
+  <label id = "slider_label" for="amount">Popularity Threshold:</label>
+</p>
+ 
+<div id="slider"></div>
+ 
+ 
+</body>
+</html>

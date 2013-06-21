@@ -1,0 +1,53 @@
+<h1>Hipster Music. Enjoy!</h1>
+
+
+<div class = "video_content">
+  	
+<iframe id = "main_video" name = "" width="560" height="315" src="http://www.youtube.com/embed/tGKaPCewPiY"
+frameborder="0" allowfullscreen></iframe>
+
+<div id = "slider_container">
+<%= render "slider"%>
+</div>
+<br/>
+<br/>
+<br/>
+
+<div id = "new_vid_button_container">
+<%= link_to 'New Video', "videos/new?popularity=5", :method => :get, 
+remote: true, id: "new_vid_button", class: "btn btn-primary btn-xlarge"%>
+</div>
+<br/>
+<br/>
+
+</div>   
+
+<div id = "test"> 
+<%if false%>
+Enable this to show text that should disappear as scripts are loaded into #test
+<%end%>
+	
+</div>
+
+<div id = "ratings">
+<p>Hip enough for you?</p>
+<%= link_to 'Yes', "/videos/"+@video.id.to_s+"/hipster"+"?hipsterness=true", 
+:method => :get, remote: true, id: "yes_button", class: "btn btn-success btn-large"%>
+
+
+<%= link_to 'No', "/videos/"+@video.id.to_s+"/hipster"+"?hipsterness=false", 
+:method => :get, remote: true, id: "no_button", class: "btn btn-warning btn-large"%>
+</div>
+<br />
+
+
+<%if false%>
+<input id = "hide">
+This is the "#hide" div. It should disappear when instructed to do so	
+</input>
+
+
+<input id = "hide2">
+This is the "#hide2" div. It should disappear when instructed to do so	
+</input>
+<%end%>

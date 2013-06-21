@@ -1,0 +1,116 @@
+@import "bootstrap";
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.video_content {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#slider_container{
+  margin-left: auto;
+  margin-right: auto;  
+  text-align: center;
+  width: 500px;
+}
+
+#amount{
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border: none; 
+  color: #f6931f; 
+  font-weight: bold;
+  font-size: 18pt;  
+}
+
+#slider{
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+#new_vid_button_container{
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }
+#ratings{
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+
+#wrapper {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+
+}
