@@ -6,8 +6,10 @@ class CreateKeywords < ActiveRecord::Migration
       t.integer :hipster, :default => 0
       t.string :name
       t.timestamps
-      
-    add_column :videos, :keyword_id, :integer
+    end
+    
+    unless column_exists? :videos, :keyword_id
+      add_column :videos, :keyword_id, :integer
     end
   end
 end

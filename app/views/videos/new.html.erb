@@ -1,76 +1,50 @@
-
-
-
 <%if false%>
-<script type = "text/javascript">
-function setVideo(data){
-	$('#test').hide();
-    var src_array = [];
-	var objects = $(data).find('content'); // return an array of all content elements in the data
-	objects.each(function(){
-		if($(this).attr("type") == 'application/x-shockwave-flash'){ // adds value of src to array if content is video
-			src_array.push($(this).attr("src"));
-		}
-	
-	var video_index = Math.floor(Math.random()*src_array.length);
-	$('#main_video').attr({"src" : src_array[video_index]});
-	
-  var html = ['<ul>'];
-  for (var i = 0; i < entries.length; i++) {
-    var entry = entries[i];
-    var title = entry.title.$t;
-    html.push('<li>', title, '</li>');
-  }
-  html.push('</ul>');
-  document.getElementById('videos').innerHTML = html.join('');	
-});
-
-</script>
-
+<div>_new.html.erb rendered successfully</div>
 <%end%>
 
 
-
-<h1>Hipster Music. Enjoy!</h1>
-
-
-  <div class = "video_content">
-  
-
-<iframe id = "main_video" width="560" height="315" src="http://www.youtube.com/embed/BkEo65QkxHs" 
-frameborder="0" allowfullscreen></iframe>
-<br/>
-<br/>
-<%= link_to 'New Video', new_video_path %>
-</div>   
-
-<p id = "test"> cake </p>
-<br />
-
-
-
+<div id = "search_script_wrapper">
+	
 <script type="text/javascript">
 function setVideo(data) {
-  $('#test').hide();
-  var src_array = [];  
+  var src_array = [];
+  var name_array = [];  
   var feed = data.feed;
   var entries = feed.entry || [];
-  
+  $('#realtest').hide();
    $(entries).each(function(){
   	if(this.content.type == 'application/x-shockwave-flash'){
-  		src_array.push(this.content.src);	
+  		src_array.push(this.content.src);
+  		name_array.push(this.title.$t);	
   	}
 	var video_index = Math.floor(Math.random()*src_array.length);
-	$('#main_video').attr({"src" : src_array[video_index]});
-  }); 
+	var good_video = false;
+	var re = /best of|top/
+	while(good_video == false){
+  		var video_index = Math.floor(Math.random()*src_array.length);
+  		if(re.test(name_array[video_index])){
+  			src_array.splice(video_index, 1)
+  		}
+  		
+  		else{
+  			good_video = true
+  		}
+	}
+	$('#main_video').attr({"src": src_array[video_index], "name": name_array[video_index]});
+
+
+  });
+  $.post("/videos", {hipster: 0, identifier: $('#main_video').attr("src"), name: $('#main_video').attr("name")}); 
     
 
 }
 </script>
 
 
-<div id="videos" />
 <script 
     type="text/javascript" 
 src='<%=@search_url%>'>
 </script>
+</div>
+
+<div id = "end_of_script"></div>

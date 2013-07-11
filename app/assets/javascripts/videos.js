@@ -40,21 +40,30 @@ $(function(){
 
 
 
+
+
+
 $(function(){
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-  }
+	$('#wrapper_and_tabs').prepend("<div id = 'home_tab_div'></div");
+	var offset = $('#home_tab').offset();
+	$("#home_tab_div").offset({top: offset.top+30, left: offset.left});
+	var height = $('#home_tab').height();
+	var width = $("#home_tab").width();
+	
+	$('#home_tab_div').css({"height" : "38", "width" : "64"});
+
+	
+		
 });
 
 $(window).resize(function(){
 	var height = $(window).height();
-	var wrapper_height = $('#wrapper').outerHeight();
+	var wrapper_height = $('#wrapper_and_tabs').outerHeight();
+	if(height > wrapper_height){
 	var window_o = $(window).scrollTop();
-	var wrapper_o = $('#wrapper').offset();
-	$('#wrapper').offset({left: wrapper_o.left, top: (height-wrapper_height)/2});
+	var wrapper_o = $('#wrapper_and_tabs').offset();
+	$('#wrapper_and_tabs').offset({left: wrapper_o.left, top: (height-wrapper_height)/2});
+	}
 });
 
 $(window).resize();
-	
-});

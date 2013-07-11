@@ -1,5 +1,8 @@
 Hipstertunes::Application.routes.draw do
+  resources :keywords
   resources :videos
+  
+  match '/hits' => "videos#hits", as: "hits"
 
 
   # The priority is based upon order of creation:

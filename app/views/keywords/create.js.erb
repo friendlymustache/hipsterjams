@@ -1,0 +1,10 @@
+
+
+
+
+<%if @keyword_saved%>
+	$('#error_message').remove();
+	$('#keyword_name').val(" ")
+	$('#message_container').html("<p>Added <%= @keyword.name %> to our <%=link_to "list", keywords_path, :remote => true %> of keywords </p>");	
+
+<%end%>

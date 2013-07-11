@@ -1,0 +1,27 @@
+<h1>Top Videos</h1>
+
+
+<% i = 0%>
+
+
+<div id = "start_of_list">
+<%= div_for(@videos) do |v| %>
+
+	<div id = "video_info">
+		<p>
+			<%= (i+=1).to_s+". "%>
+			
+			<a href = <%=v.identifier%>><%= v.name.slice(0,30)+ (v.name.length>30 ? "..." : "") %></a>
+
+			
+			<br/>
+		</p>
+	</div>
+
+<%end%>
+</div>
+
+<div id = "end_of_list"></div>
+
+
+

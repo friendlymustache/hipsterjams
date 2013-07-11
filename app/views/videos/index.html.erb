@@ -2,6 +2,23 @@
 
 
 <div class = "video_content">
+	
+<%if false%>
+Gets the script for searching for and loading a new video from new.html.erb (not _new.html.erb) and loads it onto the page
+<%end%>
+
+<script id = "script_to_get_new_video">
+	$.get("/videos/new", function(data){		
+		var start = data.search('<div id = "search_script_wrapper">')+'<div id = "search_script_wrapper">'.length;
+		var end = data.search('<div id = "end_of_script">')-1;
+		$('#test').html(data.slice(start, end));
+		// $('#wrapper').append("<div>"+"length of data: "+data.length+", start and end: "+start+" and "+end+"</div>");		
+		
+	});	
+	
+
+</script>
+	
   	
 <iframe id = "main_video" name = "" width="560" height="315" src="http://www.youtube.com/embed/tGKaPCewPiY"
 frameborder="0" allowfullscreen></iframe>
@@ -26,7 +43,6 @@ remote: true, id: "new_vid_button", class: "btn btn-primary btn-xlarge"%>
 <%if false%>
 Enable this to show text that should disappear as scripts are loaded into #test
 <%end%>
-	
 </div>
 
 <div id = "ratings">
@@ -50,4 +66,6 @@ This is the "#hide" div. It should disappear when instructed to do so
 <input id = "hide2">
 This is the "#hide2" div. It should disappear when instructed to do so	
 </input>
+
+
 <%end%>

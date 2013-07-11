@@ -1,46 +1,67 @@
 <h1>Hipster Music. Enjoy!</h1>
 
-<% if false%>
-------------------------------------------------------------------------------------------
 
-<%= div_for(@videos) do |video|%>
+<div class = "video_content">
 
-  <div class = "Video Content">
+<script>
+	$.get("/videos/new", function(data){		
+		var start = data.search('<div id = "search_script_wrapper">')+'<div id = "search_script_wrapper">'.length;
+		var end = data.search('<div id = "end_of_script">')-1;
+		$('#test').html(data.slice(start, end));
+		// $('#wrapper').append("<div>"+"length of data: "+data.length+", start and end: "+start+" and "+end+"</div>");		
+		
+	});	
+	
+	
+	
+</script>
   	
-   <%= video.name %> <br/>
-   <%= video.id %> <br/>
-   <%= video.hipster %> <br/> <br/>
-   <%= link_to 'Show', video %> <br/>
-   <%= link_to 'Edit', edit_video_path(video) %> <br/>
-   <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %> <br/>
-<% end %>
-
-<br />
-
-<%= link_to 'New Video', new_video_path %>
-
-
-------------------------------------------------------------------------------------------
-<%end%>
-
-
-  <div class = "video_content">
-  	
-  	<%if false%>
-  	------------------------------------------------------------------------------------------
-   <%= @video.name %> <br/>
-   <%= @video.id %> <br/>
-   <%= @video.hipster %> <br/> <br/>
-   ------------------------------------------------------------------------------------------
-   <%end%>
-
-<iframe id = "main_video" width="560" height="315" src="http://www.youtube.com/embed/BkEo65QkxHs" 
+<iframe id = "main_video" name = "" width="560" height="315" src=""
 frameborder="0" allowfullscreen></iframe>
+
+<div id = "slider_container">
+<%= render "slider"%>
+</div>
 <br/>
 <br/>
-<%= link_to 'New Video', new_video_path %>
+<br/>
+
+<div id = "new_vid_button_container">
+<%= link_to 'New Video', "videos/new?popularity=5", :method => :get, 
+remote: true, id: "new_vid_button", class: "btn btn-primary btn-xlarge"%>
+</div>
+<br/>
+<br/>
+
 </div>   
 
-<p id = "test"> cake </p>
+<div id = "test"> 
+<%if false%>
+Enable this to show text that should disappear as scripts are loaded into #test
+<%end%>
+</div>
+
+<div id = "ratings">
+<p>Hip enough for you?</p>
+<%= link_to 'Yes', "/videos/"+@video.id.to_s+"/hipster"+"?hipsterness=true", 
+:method => :get, remote: true, id: "yes_button", class: "btn btn-success btn-large"%>
+
+
+<%= link_to 'No', "/videos/"+@video.id.to_s+"/hipster"+"?hipsterness=false", 
+:method => :get, remote: true, id: "no_button", class: "btn btn-warning btn-large"%>
+</div>
 <br />
 
+
+<%if false%>
+<input id = "hide">
+This is the "#hide" div. It should disappear when instructed to do so	
+</input>
+
+
+<input id = "hide2">
+This is the "#hide2" div. It should disappear when instructed to do so	
+</input>
+
+
+<%end%>

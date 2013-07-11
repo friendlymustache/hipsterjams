@@ -1,7 +1,18 @@
 
 
 
-$('#test').html('<%= j render "new" %>')
+$('#test').html('<%= j render "new" %>');
+$('#yes_button').attr("class", "btn btn-large btn-success");
+$('#no_button').attr("class", "btn btn-large btn-warning");
+
+
+<%if false%>
+Javascript below inserted to reset the voted variable to false every time a new video is loaded
+<%end%>
+
+var voted = false;
+
+
 
 
 

@@ -1,0 +1,12 @@
+<h1>Enter a new Keyword and we'll use it to find videos!</h1>
+
+<div id = "message_container"></div>
+
+<%= form_for(@keyword, :id => "new_keyword", :remote => true) do |f| %>
+
+<%= f.label :name %> <br/>
+<%= f.text_field :name %> <br/>
+
+<%= f.submit :value => "Create Keyword"%>
+
+<%end%>

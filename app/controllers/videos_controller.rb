@@ -6,6 +6,15 @@ class VideosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @videos }
+      format.js 
+    end
+  end
+  
+  def hits
+    @videos = Video.order("hipster DESC")
+    respond_to do |format|
+      format.html 
+      format.js
     end
   end
 
@@ -100,6 +109,7 @@ class VideosController < ApplicationController
       if @video.save
         format.js
       else
+        @video = video
         format.html { render action: "new" }
         format.json { render json: @video.errors, status: :unprocessable_entity }
         format.js
@@ -158,10 +168,10 @@ class VideosController < ApplicationController
       if @video.save
         format.html { redirect_to root_path }
         # format.js { redirect_to new_video_path+"?popularity="+params[:popularity] }
-        format.js {redirect_to root_path}
+        format.js {render nothing: true}
       else
         format.html {redirect_to root_path, notice: "There was an error saving your vote"}
-        format.js {redirect_to root_path}
+        format.js {render nothing: true}
       end
     end
   end
