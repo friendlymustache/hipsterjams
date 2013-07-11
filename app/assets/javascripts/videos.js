@@ -42,20 +42,6 @@ $(function(){
 
 
 
-
-$(function(){
-	$('#wrapper_and_tabs').prepend("<div id = 'home_tab_div'></div");
-	var offset = $('#home_tab').offset();
-	$("#home_tab_div").offset({top: offset.top+30, left: offset.left});
-	var height = $('#home_tab').height();
-	var width = $("#home_tab").width();
-	
-	$('#home_tab_div').css({"height" : "38", "width" : "64"});
-
-	
-		
-});
-
 $(window).resize(function(){
 	var height = $(window).height();
 	var wrapper_height = $('#wrapper_and_tabs').outerHeight();

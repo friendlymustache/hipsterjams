@@ -55,6 +55,7 @@
 
 
 $('#hits_tab').click(function(e){
+	$('#main_video').hide();
 	$.get("/hits", function(data){		
 		var start = data.search('<h1>Top Videos</h1>');
 		var end = data.search('<div id = "end_of_list">')-1;
@@ -64,6 +65,31 @@ $('#hits_tab').click(function(e){
 		
 	});	
 });
+
+
+$('#home_tab').click(function(e){
+	$.get("/", function(data){		
+		var start = data.search('<h1>');
+		var end = data.search('<div id = "end_of_index">')-1;
+		$('#wrapper').html(data.slice(start,end));
+
+		// $('#wrapper').append("<div>"+"length of data: "+data.length+", start and end: "+start+" and "+end+"</div>");		
+		
+	});	
+});
+
+$('#keyword_tab').click(function(e){
+	$('#main_video').hide();
+	$.get("/keywords/new", function(data){		
+		var start = data.search('<h1>');
+		var end = data.search('<div id = "end_of_form">')-1;
+		$('#wrapper').html(data.slice(start,end));
+
+		// $('#wrapper').append("<div>"+"length of data: "+data.length+", start and end: "+start+" and "+end+"</div>");		
+		
+	});	
+});
+
 
 
 

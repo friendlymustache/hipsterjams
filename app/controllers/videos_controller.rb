@@ -41,10 +41,15 @@ class VideosController < ApplicationController
       adjectives += ["mumford and sons", "fleet foxes", "vampire weekend", "sigur ros"]
     end
     genres = ["electronica", "folk", "folk rock", "jazz"]
-    random = rand(genres.length)
-    random2 = rand(adjectives.length)
-    @search_string = adjectives[random2]+"+"+genres[random]
- 
+    genre_random = rand(genres.length)
+    adjective_random = rand(adjectives.length)
+    
+    @adjectives_keyword = adjectives[adjective_random]
+    @genre_keyword = genres[genre_random]
+    
+    
+    @search_string = adjectives[adjective_random]+"+"+genres[genre_random]
+    
     
     @youtube_url = "http://www.youtube.com/results?search_type=videos&search_query="+
     @search_string+"&filters=video&search_sort=video_view_count&alt=json-in-script&format=5&callback=setVideo"
@@ -55,8 +60,7 @@ class VideosController < ApplicationController
      else
        @start_index = "1"
      end
-     @max_results = (10+(7-@popularity)*3) # more max results so more low-view videos
-     @search_string += "+-top ten list" # don't include videos with "top ten"     
+     @max_results = (10+(7-@popularity)*3) # more max results so more low-view videos     
    end
   
    if @popularity <= 4
@@ -64,9 +68,6 @@ class VideosController < ApplicationController
        @max_results = (20+(4-@popularity)*5) #even more max results       
    end
    
-   if @popularity <= 2
-       @search_string += "+-best_of" #don't include videos with "best of"     
-   end
      
    if @popularity >=8 #if popularity is 8, 9, 10
      @start_index = "1"
@@ -97,6 +98,8 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
+    keyword_1 = params[:keyword1]
+    keyword_2 = params[:keyword2]
     identifier = params[:identifier]
     video = Video.find_by_name(params[:name])
     if video == nil

@@ -17,9 +17,9 @@ function setVideo(data) {
   		src_array.push(this.content.src);
   		name_array.push(this.title.$t);	
   	}
-	var video_index = Math.floor(Math.random()*src_array.length);
 	var good_video = false;
 	var re = /best of|top/
+	
 	while(good_video == false){
   		var video_index = Math.floor(Math.random()*src_array.length);
   		if(re.test(name_array[video_index])){
